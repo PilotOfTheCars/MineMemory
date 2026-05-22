@@ -398,13 +398,18 @@ export default function PreLoginLanding({ onEnterAuth, onEnterDemo }: PreLoginLa
       </main>
 
       {/* Footer statistics system strip */}
-      <footer className="bg-[#1c120c] border-t-8 border-[#130b08] py-6 px-6 font-mono text-amber-100/70 uppercase flex flex-col md:flex-row justify-between items-center gap-3 text-[10px] relative z-10">
-        <div className="flex items-center gap-2">
-          <Gamepad2 className="w-4 h-4 text-[#55ff55] animate-pulse" />
-          <span className="font-bold">MineMemory Compass Terminal Base Sync Connected</span>
+      <footer className="bg-[#1c120c] border-t-8 border-[#130b08] py-6 px-6 font-mono text-amber-100/70 uppercase flex flex-col items-center gap-3 text-[10px] relative z-10">
+        <div className="w-full flex flex-col md:flex-row justify-between items-center gap-3">
+          <div className="flex items-center gap-2">
+            <Gamepad2 className="w-4 h-4 text-[#55ff55] animate-pulse" />
+            <span className="font-bold">MineMemory Compass Terminal Base Sync Connected</span>
+          </div>
+          <div className="font-bold">Offline local state. Zero tracking telemetry files.</div>
+          <span className="text-zinc-400 font-pressstart text-[7px] tracking-widest">© 2026 MINEMEMORY COMPASS</span>
         </div>
-        <div className="font-bold">Offline local state. Zero tracking telemetry files.</div>
-        <span className="text-zinc-400 font-pressstart text-[7px] tracking-widest">© 2026 MINEMEMORY COMPASS</span>
+        <div className="text-center text-zinc-500 font-mono text-[9px] tracking-wide mt-1 border-t border-amber-950/40 pt-3 w-full">
+          NOT AN OFFICIAL MINECRAFT PRODUCT, AND NOT APPROVED BY OR ASSOCIATED WITH MOJANG OR MICROSOFT
+        </div>
       </footer>
 
     </div>

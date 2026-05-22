@@ -328,9 +328,14 @@ export default function WorldSelectPage({
       </div>
 
       {/* Footer system status */}
-      <div className="w-full max-w-5xl mx-auto flex flex-col sm:flex-row justify-between items-center text-xs text-zinc-200 font-mono p-3 bg-black/45 border-2 border-[#533d26] px-4 font-bold tracking-wider z-10 gap-2">
-        <div>Worlds folder location: HTML5 Local Deck space</div>
-        <div className="text-yellow-400">Select any active node card above to spawn UI panels.</div>
+      <div className="w-full max-w-5xl mx-auto flex flex-col items-center text-xs text-zinc-200 font-mono p-3 bg-black/45 border-2 border-[#533d26] px-4 font-bold tracking-wider z-10 gap-2">
+        <div className="w-full flex flex-col sm:flex-row justify-between items-center gap-2">
+          <div>Worlds folder location: HTML5 Local Deck space</div>
+          <div className="text-yellow-400">Select any active node card above to spawn UI panels.</div>
+        </div>
+        <div className="text-center text-zinc-500 font-mono text-[9px] tracking-wide mt-1.5 border-t border-[#533d26]/45 pt-2 w-full uppercase">
+          NOT AN OFFICIAL MINECRAFT PRODUCT, AND NOT APPROVED BY OR ASSOCIATED WITH MOJANG OR MICROSOFT
+        </div>
       </div>
     </div>
   );

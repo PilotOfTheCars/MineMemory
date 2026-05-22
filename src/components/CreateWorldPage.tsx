@@ -309,8 +309,11 @@ export default function CreateWorldPage({ onBack, onSave }: CreateWorldPageProps
       </div>
 
       {/* Footer info lock */}
-      <div className="text-center text-xs font-mono font-bold z-10 pt-6 text-white bg-black/35 max-w-sm mx-auto p-2 border-2 border-[#533d26]">
-        MINEMEMORY OS SPAWNING GRID — SAVED LOCALLY
+      <div className="text-center text-xs font-mono font-bold z-10 text-white bg-black/35 max-w-lg mx-auto p-3 border-2 border-[#533d26] flex flex-col items-center gap-1.5 mt-4">
+        <div>MINEMEMORY OS SPAWNING GRID — SAVED LOCALLY</div>
+        <div className="text-[9px] text-zinc-400 border-t border-[#533d26]/40 pt-2 w-full uppercase">
+          NOT AN OFFICIAL MINECRAFT PRODUCT, AND NOT APPROVED BY OR ASSOCIATED WITH MOJANG OR MICROSOFT
+        </div>
       </div>
     </div>
   );

@@ -239,9 +239,11 @@ export default function LandingPage({
       </div>
 
       {/* Footer system details */}
-      <div className="mt-8 text-center text-xs text-white bg-black/35 px-4 py-2 border-2 border-[#533d26] font-mono tracking-wider z-10 flex flex-col items-center gap-1 font-bold">
+      <div className="mt-8 text-center text-xs text-white bg-black/35 px-4 py-3 border-2 border-[#533d26] font-mono tracking-wider z-10 flex flex-col items-center gap-2 font-bold max-w-2xl mx-auto w-full">
         <div>MINEMEMORY COMPASS COMPANION — LOCAL ENCRYPTED DECK</div>
-        <div className="text-[10px] text-zinc-300">NOT AN OFFICIAL MINECRAFT PRODUCT. DEVELOPED FOR WORLD LOGGING.</div>
+        <div className="text-[9px] text-zinc-400 border-t border-[#533d26]/40 pt-2 w-full uppercase">
+          NOT AN OFFICIAL MINECRAFT PRODUCT, AND NOT APPROVED BY OR ASSOCIATED WITH MOJANG OR MICROSOFT
+        </div>
       </div>
     </div>
   );

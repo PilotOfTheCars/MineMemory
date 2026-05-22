@@ -88,6 +88,11 @@ export default function SeedExplorer({ world, onUpdateWorld, isReadOnly = false 
           id="mcseedmap-iframe"
         />
       </div>
+
+      {/* Attribution notice */}
+      <div className="text-center font-mono text-[10px] text-zinc-500 uppercase tracking-wide py-1">
+        Embedded seed map functionality powered by mcseedmap.net. All rights belong to their respective owners.
+      </div>
     </div>
   );
 }

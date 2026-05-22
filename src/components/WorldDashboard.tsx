@@ -783,9 +783,14 @@ export default function WorldDashboard({
       </div>
 
       {/* Footer statistics ribbon */}
-      <footer className="bg-black/85 border-t-4 border-zinc-700 py-3.5 px-4 font-mono text-xs text-zinc-300 uppercase flex flex-col sm:flex-row justify-between items-center gap-2 z-10 relative">
-        <div>MineMemory Satellite Terminal Node Syncing... <span className="text-mc-green font-bold">ACTIVE</span></div>
-        <div className="text-[10px] text-zinc-400">Coordinates and step log files are saved automatically in standard Local Storage.</div>
+      <footer className="bg-black/85 border-t-4 border-zinc-700 py-3.5 px-4 font-mono text-xs text-zinc-300 uppercase flex flex-col items-center gap-2 z-10 relative">
+        <div className="w-full flex flex-col sm:flex-row justify-between items-center gap-2">
+          <div>MineMemory Satellite Terminal Node Syncing... <span className="text-mc-green font-bold">ACTIVE</span></div>
+          <div className="text-[10px] text-zinc-400">Coordinates and step log files are saved automatically in standard Local Storage.</div>
+        </div>
+        <div className="text-center text-zinc-500 font-mono text-[9px] tracking-wide mt-1.5 border-t border-zinc-800/60 pt-2 w-full">
+          NOT AN OFFICIAL MINECRAFT PRODUCT, AND NOT APPROVED BY OR ASSOCIATED WITH MOJANG OR MICROSOFT
+        </div>
       </footer>
 
     </div>
