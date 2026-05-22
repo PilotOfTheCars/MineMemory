@@ -1,0 +1,6 @@
+{
+  "name": "MineMemory",
+  "description": "The Operating System for Minecraft Worlds. A nostalgic survival journal, command center, coordinate vault, and hardcore world manager.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
