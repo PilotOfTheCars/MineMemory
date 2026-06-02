@@ -356,6 +356,9 @@ export default function WorldDashboard({
                 ? 'bg-[#7c7c7c] border-[#ffffa0] text-[#ffffa0] font-bold'
                 : 'bg-black/30 border-transparent text-zinc-400 hover:text-white hover:border-zinc-700'
             }`}
+            data-mc-tooltip="OVERVIEW CONSOLE"
+            data-mc-tooltip-desc="Access diagnostic state, seeds indices, total survived checklist logs, and key safehouses coordinates."
+            data-mc-tooltip-color="text-mc-gold"
           >
             <Home className="w-4 h-4 shrink-0" /> DASHBOARD
           </button>
@@ -367,6 +370,9 @@ export default function WorldDashboard({
                 ? 'bg-[#7c7c7c] border-[#ffffa0] text-[#ffffa0] font-bold'
                 : 'bg-black/30 border-transparent text-zinc-400 hover:text-white hover:border-zinc-700'
             }`}
+            data-mc-tooltip="JOURNAL LOGLINES"
+            data-mc-tooltip-desc="Record day-by-day explorations, diamond milestones, fortresses, and boss encounters history."
+            data-mc-tooltip-color="text-mc-green"
           >
             <BookOpen className="w-4 h-4 shrink-0" /> JOURNAL ({world.logs?.length || 0})
           </button>
@@ -378,6 +384,9 @@ export default function WorldDashboard({
                 ? 'bg-[#7c7c7c] border-[#ffffa0] text-[#ffffa0] font-bold'
                 : 'bg-black/30 border-transparent text-zinc-400 hover:text-white hover:border-zinc-700'
             }`}
+            data-mc-tooltip="COORDINATES VAULT"
+            data-mc-tooltip-desc="Securely register Nether portals, ocean monuments, Trial Chambers, and home base coordinates."
+            data-mc-tooltip-color="text-mc-aqua"
           >
             <MapPin className="w-4 h-4 shrink-0" /> COORDS ({world.coordinates?.length || 0})
           </button>
@@ -389,6 +398,9 @@ export default function WorldDashboard({
                 ? 'bg-[#7c7c7c] border-[#ffffa0] text-[#ffffa0] font-bold'
                 : 'bg-black/30 border-transparent text-zinc-400 hover:text-white hover:border-zinc-700'
             }`}
+            data-mc-tooltip="BLUEPRINT MATERIALIZERS"
+            data-mc-tooltip-desc="Plan mega-farms, castles, or redstone loops with dynamic checked building blocks progress gauges."
+            data-mc-tooltip-color="text-mc-gold"
           >
             <Hammer className="w-4 h-4 shrink-0" /> BLUEPRINTS ({world.projects?.length || 0})
           </button>
@@ -400,6 +412,9 @@ export default function WorldDashboard({
                 ? 'bg-[#7c7c7c] border-[#ffffa0] text-[#ffffa0] font-bold'
                 : 'bg-black/30 border-transparent text-zinc-400 hover:text-white hover:border-zinc-700'
             }`}
+            data-mc-tooltip="ADVANCEMENTS RACK"
+            data-mc-tooltip-desc="Setup ultimate checkpoints such as beating the Ender Dragon or securing an Elytra wings glider."
+            data-mc-tooltip-color="text-mc-yellow"
           >
             <Award className="w-4 h-4 shrink-0" /> ACHIEVE ({world.goals?.length || 0})
           </button>
@@ -411,6 +426,9 @@ export default function WorldDashboard({
                 ? 'bg-[#7c7c7c] border-[#ffffa0] text-[#ffffa0] font-bold'
                 : 'bg-black/30 border-transparent text-zinc-400 hover:text-white hover:border-zinc-700'
             }`}
+            data-mc-tooltip="TRAGIC OBITUARIES"
+            data-mc-tooltip-desc="Register near-deaths, lava accidents or equipment losses to prevent repeating past failures."
+            data-mc-tooltip-color="text-mc-red"
           >
             <ShieldAlert className="w-4 h-4 shrink-0" /> CASUALTIES ({world.incidents?.length || 0})
           </button>
@@ -422,6 +440,9 @@ export default function WorldDashboard({
                 ? 'bg-[#7c7c7c] border-[#ffffa0] text-[#ffffa0] font-bold'
                 : 'bg-black/30 border-transparent text-zinc-400 hover:text-white hover:border-zinc-700'
             }`}
+            data-mc-tooltip="SEED CARTOGRAPHY GRID"
+            data-mc-tooltip-desc="Direct live iframe view to mcseedmap.net coordinates biome mapping tools."
+            data-mc-tooltip-color="text-mc-aqua"
           >
             <Compass className="w-4 h-4 shrink-0" /> MCSEEDMAP.NET
           </button>
@@ -433,6 +454,9 @@ export default function WorldDashboard({
                 ? 'bg-[#291e38] border-[#df97ff] text-[#e8c5ff] font-bold'
                 : 'bg-black/30 border-transparent text-zinc-400 hover:text-white hover:border-zinc-700'
             }`}
+            data-mc-tooltip="INTELLIGENCE COGNITION"
+            data-mc-tooltip-desc="Consult the neural AI Oracle regarding portal coordinates algebra or base layouts theoretical guidance."
+            data-mc-tooltip-color="text-mc-purple"
           >
             <Sparkles className="w-5 h-5 shrink-0 text-[#df97ff]" /> ORACLE CLOUD
           </button>

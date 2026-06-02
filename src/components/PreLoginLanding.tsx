@@ -115,14 +115,11 @@ export default function PreLoginLanding({ onEnterAuth, onEnterDemo }: PreLoginLa
 
         <div className="flex items-center gap-3">
           <button 
-            onClick={handleDemoBtn}
-            className="mc-button py-2 px-3 text-[10px] flex items-center gap-1.5 hover:text-[#ffffa0] transition shadow-md"
-          >
-            <Eye className="w-3.5 h-3.5" /> FREE DEMO
-          </button>
-          <button 
             onClick={handleAuthBtn}
             className="mc-button mc-button-green py-2 px-4 text-[10px] flex items-center gap-1.5 transition shadow-md"
+            data-mc-tooltip="SECURE ACCESS CELL"
+            data-mc-tooltip-desc="Create or synchronize your personal encrypted off-grid storage terminal."
+            data-mc-tooltip-color="text-mc-green"
           >
             <LogIn className="w-3.5 h-3.5 text-white" /> REGISTER / LOGIN
           </button>
@@ -177,6 +174,9 @@ export default function PreLoginLanding({ onEnterAuth, onEnterDemo }: PreLoginLa
               className={`p-3 flex flex-col items-center justify-center border-4 transition active:scale-95 ${
                 activeSoundId === 'click' ? 'bg-[#5fac52] border-white text-white' : 'bg-minecraft-planks hover:brightness-110 text-stone-900 border-[#8c683f]'
               }`}
+              data-mc-tooltip="OAK BUTTON CLICK"
+              data-mc-tooltip-desc="Acoustic trigger for oak button actuators or pressure plates."
+              data-mc-tooltip-color="text-mc-gold"
             >
               <span className="text-2xl drop-shadow-[2px_2px_0_rgba(0,0,0,0.3)]">🪵</span>
               <span className="font-pressstart text-[8px] mt-1.5 block font-bold">OAK WOOD</span>
@@ -186,6 +186,9 @@ export default function PreLoginLanding({ onEnterAuth, onEnterDemo }: PreLoginLa
               className={`p-3 flex flex-col items-center justify-center border-4 transition active:scale-95 ${
                 activeSoundId === 'xp' ? 'bg-[#5fac52] border-white text-white' : 'bg-[#153415] hover:bg-[#1a411a] text-[#55ff55] border-[#55ff55]/50'
               }`}
+              data-mc-tooltip="XP ENCHANTING ORB"
+              data-mc-tooltip-desc="The sparkling ring of absorbing magical experience points."
+              data-mc-tooltip-color="text-mc-green"
             >
               <span className="text-2xl drop-shadow-[2px_2px_0_rgba(0,0,0,0.3)]">🟢</span>
               <span className="font-pressstart text-[8px] mt-1.5 block font-bold">XP ORB</span>
@@ -195,6 +198,9 @@ export default function PreLoginLanding({ onEnterAuth, onEnterDemo }: PreLoginLa
               className={`p-3 flex flex-col items-center justify-center border-4 transition active:scale-95 ${
                 activeSoundId === 'level' ? 'bg-[#e7ac1c] border-white text-white' : 'bg-minecraft-gold text-white border-yellow-600'
               }`}
+              data-mc-tooltip="LEVEL GRADUATION"
+              data-mc-tooltip-desc="Award notification ring representing leveling up thresholds."
+              data-mc-tooltip-color="text-mc-yellow"
             >
               <span className="text-2xl drop-shadow-[2px_2px_0_rgba(0,0,0,0.3)]">🌟</span>
               <span className="font-pressstart text-[8px] mt-1.5 block font-bold">LEVEL UP</span>
@@ -204,6 +210,9 @@ export default function PreLoginLanding({ onEnterAuth, onEnterDemo }: PreLoginLa
               className={`p-3 flex flex-col items-center justify-center border-4 transition active:scale-95 ${
                 activeSoundId === 'chest' ? 'bg-[#5fac52] border-white text-white' : 'bg-[#533f2c] text-amber-500 border-amber-800'
               }`}
+              data-mc-tooltip="CHEST DOOR SHUT"
+              data-mc-tooltip-desc="Mechanism of opening or latching cedar logs vault boxes."
+              data-mc-tooltip-color="text-mc-gold"
             >
               <span className="text-2xl drop-shadow-[2px_2px_0_rgba(0,0,0,0.3)]">🧳</span>
               <span className="font-pressstart text-[8px] mt-1.5 block font-bold">CHEST</span>
@@ -213,6 +222,9 @@ export default function PreLoginLanding({ onEnterAuth, onEnterDemo }: PreLoginLa
               className={`p-3 flex flex-col items-center justify-center border-4 transition active:scale-95 ${
                 activeSoundId === 'cave' ? 'bg-[#a12eff] border-white text-white' : 'bg-[#211d2b] text-purple-400 border-purple-900'
               }`}
+              data-mc-tooltip="CAVEMUSIC FREQUENCY"
+              data-mc-tooltip-desc="Spooky ambient resonance vibrating deep through underground caves."
+              data-mc-tooltip-color="text-mc-purple"
             >
               <span className="text-2xl drop-shadow-[2px_2px_0_rgba(0,0,0,0.3)]">💀</span>
               <span className="font-pressstart text-[8px] mt-1.5 block font-bold">AMBIENT</span>
@@ -222,6 +234,9 @@ export default function PreLoginLanding({ onEnterAuth, onEnterDemo }: PreLoginLa
               className={`p-3 flex flex-col items-center justify-center border-4 transition active:scale-95 ${
                 activeSoundId === 'hurt' ? 'bg-[#ff5555] border-white text-white' : 'bg-[#3b1212] text-red-500 border-red-800'
               }`}
+              data-mc-tooltip="DAMAGE NOTIFIER"
+              data-mc-tooltip-desc="Classic throwback oof sound representing player health impact."
+              data-mc-tooltip-color="text-mc-red"
             >
               <span className="text-2xl drop-shadow-[2px_2px_0_rgba(0,0,0,0.3)]">💥</span>
               <span className="font-pressstart text-[8px] mt-1.5 block font-bold">HURT</span>
@@ -229,77 +244,46 @@ export default function PreLoginLanding({ onEnterAuth, onEnterDemo }: PreLoginLa
           </div>
         </div>
 
-        {/* Core Gateway Dual Cards - Dressed in gorgeous block colors (Gold and Emerald/Diamond themes) */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 w-full max-w-4xl">
-          
-          {/* Card left: Showcase Archive gold Theme */}
-          <div className="bg-minecraft-gold p-6 flex flex-col justify-between transition-transform duration-200 hover:scale-[1.02] shadow-[8px_8px_0_rgba(0,0,0,0.7)] text-white relative">
-            <div className="absolute top-2 right-2 text-yellow-300 opacity-20">
-              <Compass className="w-16 h-16" />
+        {/* Core Gateway Single Card - Dressed in gorgeous block colors (Emerald/Grass/Slime theme) */}
+        <div className="w-full max-w-2xl">
+          {/* Card: Custom Account Grass Moss/Emerald Green Theme */}
+          <div 
+            className="bg-[#3b5d21] border-4 border-[#263c15] p-6 md:p-8 flex flex-col justify-between transition-transform duration-200 hover:scale-[1.01] shadow-[8px_8px_0_rgba(0,0,0,0.7)] text-white relative group"
+            data-mc-tooltip="Private Storage Core"
+            data-mc-tooltip-desc="Store your own Minecraft survival or hardcore worlds with full coordinate registers and maps triggers."
+            data-mc-tooltip-color="text-mc-green"
+          >
+            <div className="absolute top-2 right-2 text-[#7cdc6e] opacity-20">
+              <Sparkles className="w-20 h-20" />
             </div>
 
             <div className="space-y-4 z-10">
               <div className="flex items-center justify-between">
-                <span className="font-pressstart text-[9px] text-yellow-200 bg-yellow-950/60 px-2 py-1 border-2 border-yellow-400 font-bold uppercase">
-                  ⭐ EXHIBITION MAPS
+                <span className="font-pressstart text-[9px] text-emerald-200 bg-[#1d3010]/80 px-2.5 py-1 border-2 border-[#5fac52] font-bold uppercase tracking-wider">
+                  🌿 ADVENTURER PROFILE
                 </span>
-                <Eye className="w-5 h-5 text-yellow-300 animate-pulse" />
+                <Volume2 className="w-5 h-5 text-emerald-300 animate-pulse" />
               </div>
-              
-              <h3 className="font-pressstart text-sm sm:text-base text-white tracking-wide uppercase drop-shadow-[2px_2px_0_#000]">
-                LOAD DEMO REALM
+
+              <h3 className="font-pressstart text-base sm:text-lg text-emerald-100 tracking-wide uppercase drop-shadow-[2px_2px_0_#000]">
+                CREATE SECURE COMPASS VAULT
               </h3>
-              <p className="text-xs text-zinc-100 leading-relaxed font-mono drop-shadow-[1px_1px_0_#000]">
-                Play with preset logs, Trial Chambers coordinates list, biome seeds, and incident vaults immediately without an account.
+              <p className="text-xs sm:text-sm text-stone-200 leading-relaxed font-mono drop-shadow-[1px_1px_0_#000]">
+                Initialize and map persistent coordinates, mega-farm building lists, and survival diaries safely inside your browser. Offline local storage ensures zero remote server dependencies.
               </p>
               
-              <div className="text-[10px] bg-yellow-950/70 text-yellow-300 border-2 border-yellow-600 p-2 font-mono leading-tight">
-                <strong>🚫 DEMO PLAYING BOUNDARIES:</strong> Your edits inside the showcase world won't be saved permanently to your computer directory.
-              </div>
-            </div>
-
-            <button
-              onClick={handleDemoBtn}
-              className="mt-6 mc-button w-full shadow-lg"
-            >
-              👁️ ENTER PRESET SHOWCASE
-            </button>
-          </div>
-
-          {/* Card right: Custom Account diamond/slime green Theme */}
-          <div className="bg-minecraft-diamond p-6 flex flex-col justify-between transition-transform duration-200 hover:scale-[1.02] shadow-[8px_8px_0_rgba(0,0,0,0.7)] text-white relative">
-            <div className="absolute top-2 right-2 text-cyan-300 opacity-20">
-              <Sparkles className="w-16 h-16" />
-            </div>
-
-            <div className="space-y-4 z-10">
-              <div className="flex items-center justify-between">
-                <span className="font-pressstart text-[9px] text-cyan-200 bg-cyan-950/60 px-2 py-1 border-2 border-cyan-400 font-bold uppercase">
-                  📁 PERSISTENT STORAGE
-                </span>
-                <Volume2 className="w-5 h-5 text-cyan-300" />
-              </div>
-
-              <h3 className="font-pressstart text-sm sm:text-base text-white tracking-wide uppercase drop-shadow-[2px_2px_0_#000]">
-                CREATE OWN BASE LOGS
-              </h3>
-              <p className="text-xs text-zinc-100 leading-relaxed font-mono drop-shadow-[1px_1px_0_#000]">
-                Save personal seeds, coordinates, multi-stage building material logs, and daily survival diaries. Securely cached on your local web storage.
-              </p>
-              
-              <div className="text-[10px] bg-emerald-950/70 text-[#aeff55] border-2 border-[#5fac52] p-2 font-mono leading-tight">
-                <strong>⚙️ DATA SECURITY ASSURED:</strong> Includes local backup export systems to prevent accidental database wipes or world loss.
+              <div className="text-[10px] sm:text-[11px] bg-[#1d3010]/80 text-[#aeff55] border-2 border-[#5fac52] p-3 font-mono leading-tight">
+                <strong>⚙️ OFFLINE LOCAL CACHE:</strong> Comes equipped with JSON backup download logs to securely prevent your database diaries from being wiped.
               </div>
             </div>
 
             <button
               onClick={handleAuthBtn}
-              className="mt-6 mc-button mc-button-green w-full shadow-lg"
+              className="mt-6 mc-button mc-button-green w-full shadow-lg text-sm"
             >
-              🚀 CREATE COMPASS VAULT
+              🚀 INITIALIZE TERMINAL LOGS
             </button>
           </div>
-
         </div>
 
         {/* Minecraft Style Grid Items features overview - High contrast Inventory Grids */}
@@ -405,7 +389,7 @@ export default function PreLoginLanding({ onEnterAuth, onEnterDemo }: PreLoginLa
             <span className="font-bold">MineMemory Compass Terminal Base Sync Connected</span>
           </div>
           <div className="font-bold">Offline local state. Zero tracking telemetry files.</div>
-          <span className="text-zinc-400 font-pressstart text-[7px] tracking-widest">© 2026 MINEMEMORY COMPASS</span>
+          <span className="text-zinc-650 hover:text-amber-200 transition-colors cursor-pointer font-pressstart text-[7px] tracking-widest select-none" onClick={handleDemoBtn} title="Execute demo display logs">[⚡ SYS_DEMO_BYPASS]</span>
         </div>
         <div className="text-center text-zinc-500 font-mono text-[9px] tracking-wide mt-1 border-t border-amber-950/40 pt-3 w-full">
           NOT AN OFFICIAL MINECRAFT PRODUCT, AND NOT APPROVED BY OR ASSOCIATED WITH MOJANG OR MICROSOFT

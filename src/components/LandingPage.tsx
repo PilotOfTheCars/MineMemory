@@ -82,6 +82,9 @@ export default function LandingPage({
               onLogout();
             }}
             className="mc-button mc-button-red py-2 px-3 text-[10px] font-pressstart uppercase"
+            data-mc-tooltip="OFF-GRID DISCONNECT"
+            data-mc-tooltip-desc="Log out of active terminals and securely secure your local logs cache."
+            data-mc-tooltip-color="text-mc-red"
           >
             LOG OUT
           </button>
@@ -94,6 +97,9 @@ export default function LandingPage({
             className="mc-button py-2 px-3"
             title={soundMuted ? "Unmute Sounds" : "Mute Sounds"}
             onMouseEnter={playHoverSound}
+            data-mc-tooltip="JUKEBOX MUTING"
+            data-mc-tooltip-desc="Toggle classic Minecraft block clicks, level chimes, and retro hurt audio feedback."
+            data-mc-tooltip-color="text-mc-aqua"
           >
             {soundMuted ? <VolumeX className="w-4 h-4" /> : <Volume2 className="w-4 h-4 text-[#ffffa0]" />}
           </button>
@@ -143,6 +149,9 @@ export default function LandingPage({
           className="mc-button mc-button-green w-full text-base flex items-center justify-center gap-3 py-4 shadow-[4px_4px_0_rgba(0,0,0,1)] hover:translate-y-[-2px] hover:shadow-[6px_6px_0_rgba(0,0,0,1)] transition-all"
           onMouseEnter={playHoverSound}
           id="btn-open-worlds"
+          data-mc-tooltip="WORLDS MATRIX LIST"
+          data-mc-tooltip-desc="Open the active world log index to synchronize coordinate banks, checklists or daily diaries."
+          data-mc-tooltip-color="text-mc-green"
         >
           <Play className="w-5 h-5 fill-current shrink-0" />
           OPEN SAVED WORLDS
@@ -153,6 +162,9 @@ export default function LandingPage({
           className="mc-button w-full text-stone-100 text-base flex items-center justify-center gap-3 py-4 bg-[#7c7c7c] hover:brightness-110 border-4 border-[#aeaeae] shadow-[4px_4px_0_rgba(0,0,0,1)] hover:translate-y-[-2px] hover:shadow-[6px_6px_0_rgba(0,0,0,1)] transition-all"
           onMouseEnter={playHoverSound}
           id="btn-create-world"
+          data-mc-tooltip="SPAWNING INITIALIZER"
+          data-mc-tooltip-desc="Configure a fresh node deck. Set seeds, custom dimensions tracker, or select standard/hardcore difficulty grids."
+          data-mc-tooltip-color="text-mc-yellow"
         >
           <Plus className="w-5 h-5 shrink-0 text-white" />
           CREATE NEW WORLD

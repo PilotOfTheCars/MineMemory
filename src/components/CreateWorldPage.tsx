@@ -90,6 +90,9 @@ export default function CreateWorldPage({ onBack, onSave }: CreateWorldPageProps
           type="button"
           onClick={() => { sounds.playClick(); onBack(); }}
           className="mc-button flex items-center gap-2"
+          data-mc-tooltip="DISCARD GENERATION"
+          data-mc-tooltip-desc="Forget any configured world attributes and retreat safely to the master directory."
+          data-mc-tooltip-color="text-mc-red"
         >
           <ArrowLeft className="w-4 h-4" /> CANCEL
         </button>
@@ -218,6 +221,9 @@ export default function CreateWorldPage({ onBack, onSave }: CreateWorldPageProps
                   onClick={generateRandomSeed}
                   className="mc-button shrink-0 py-2 px-3.5 flex items-center gap-1.5"
                   title="Generate typical random seed"
+                  data-mc-tooltip="Procedural Randomizer"
+                  data-mc-tooltip-desc="Query a pseudo-random integer sequence representing noise grids for world layouts."
+                  data-mc-tooltip-color="text-mc-yellow"
                 >
                   <Sparkles className="w-4 h-4 text-mc-gold animate-pulse" /> RANDOM
                 </button>
@@ -299,6 +305,9 @@ export default function CreateWorldPage({ onBack, onSave }: CreateWorldPageProps
             <button
               type="submit"
               className="mc-button mc-button-green text-base flex items-center gap-2 py-3 px-6 shadow-md"
+              data-mc-tooltip="CONSTRUCT DECK STORAGE"
+              data-mc-tooltip-desc="Commit world metadata to your machine storage cell and initialize diary, coordinates, and maps grids."
+              data-mc-tooltip-color="text-mc-green"
             >
               🚀 SPAWN WORLD
             </button>

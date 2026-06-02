@@ -121,6 +121,9 @@ export default function WorldSelectPage({
           <button
             onClick={() => { sounds.playClick(); onBack(); }}
             className="mc-button flex items-center gap-2 "
+            data-mc-tooltip="MAIN GATEWAY"
+            data-mc-tooltip-desc="Disconnect from world-selection radar and return to home platform."
+            data-mc-tooltip-color="text-mc-gold"
           >
             <ArrowLeft className="w-4 h-4" /> BACK
           </button>
@@ -132,6 +135,9 @@ export default function WorldSelectPage({
           <button
             onClick={() => { sounds.playClick(); onCreateNewWorld(); }}
             className="mc-button mc-button-green flex items-center gap-2"
+            data-mc-tooltip="CONSTRUCT COMPASS DECK"
+            data-mc-tooltip-desc="Scaffold a clean log entry and coordinates register for your active seeds."
+            data-mc-tooltip-color="text-mc-green"
           >
             <PlusIcon /> CREATE WORLD
           </button>
@@ -204,6 +210,9 @@ export default function WorldSelectPage({
                       ? 'bg-zinc-900/90 border-[#ff5555]/40 hover:border-[#ff5555] hover:bg-zinc-850/90'
                       : 'bg-[#2b251f]/95 border-[#55ff55]/30 hover:border-[#55ff55] hover:bg-[#342c23]/95'
                 }`}
+                data-mc-tooltip={world.name.toUpperCase()}
+                data-mc-tooltip-desc={world.isLost ? "💀 MEMORIAL VAULT: Steve fell from a high place. Hardcore directory terminated." : `🎮 MODE: ${world.mode.toUpperCase()} | SEED: ${world.seed || 'none'} | VERSION: ${world.version}`}
+                data-mc-tooltip-color={world.isLost ? "text-mc-red" : isHardcore ? "text-mc-gold" : "text-mc-green"}
               >
                 {/* World Left Block Flag & Mode Representation */}
                 <div className="flex gap-4 items-start md:items-center w-full md:w-auto">

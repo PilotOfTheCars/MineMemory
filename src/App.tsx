@@ -11,6 +11,7 @@ import WorldSelectPage from './components/WorldSelectPage';
 import CreateWorldPage from './components/CreateWorldPage';
 import WorldDashboard from './components/WorldDashboard';
 import HardcoreDeathScreen from './components/HardcoreDeathScreen';
+import MinecraftTooltip from './components/MinecraftTooltip';
 import { MinecraftWorld } from './types';
 import { getStoredWorlds, saveStoredWorlds } from './utils/initialData';
 import { sounds } from './utils/audio';
@@ -42,6 +43,40 @@ export default function App() {
     setWorlds(loadedWorlds);
     setSoundMuted(sounds.getMuted());
   }, [currentUser]);
+
+  // Dynamic SEO Page Meta Tag Updates
+  useEffect(() => {
+    let titleStr = "MineMemory — The Operating System for Minecraft Worlds";
+    let descStr = "MineMemory is a Minecraft world tracker and survival archive for Survival and Hardcore worlds. Track projects, coordinates, world history, expeditions, journals, memories, and seed map tools.";
+
+    if (currentUser) {
+      const activeWorld = worlds.find(w => w.id === selectedWorldId);
+      if (currentScreen === 'landing') {
+        titleStr = `Home Terminal — MineMemory OS`;
+        descStr = "Welcome to your personal MineMemory Minecraft terminal. Select, create, or archive your Survival and Hardcore gaming worlds.";
+      } else if (currentScreen === 'select') {
+        titleStr = `Select World — MineMemory Terminal`;
+        descStr = "Choose or import a Minecraft world to track projects, coordinate vaults, safety logs, and seed map explorations.";
+      } else if (currentScreen === 'create') {
+        titleStr = `Initialize New Game World Node — MineMemory`;
+        descStr = "Configure a survival or hardcore tracking profile. Create coordinate grids, survivor journals, and custom metrics.";
+      } else if (currentScreen === 'dashboard' && activeWorld) {
+        titleStr = `${activeWorld.name} [${activeWorld.mode === 'hardcore' ? '🔴 HARDCORE' : '💚 SURVIVAL'}] — MineMemory Tracker`;
+        descStr = `Active monitoring of Minecraft world ${activeWorld.name}. Viewing survival statistics, coordinate lists, project milestones, and seed map configurations.`;
+      }
+    } else {
+      if (preLoginView === 'auth') {
+        titleStr = "Authenticate Node — MineMemory Minecraft Tracker";
+        descStr = "Sign in or register your off-grid terminal connection to start archiving survival and hardcore Minecraft diaries.";
+      }
+    }
+
+    document.title = titleStr;
+    const metaDesc = document.querySelector('meta[name="description"]');
+    if (metaDesc) {
+      metaDesc.setAttribute('content', descStr);
+    }
+  }, [currentScreen, currentUser, preLoginView, selectedWorldId, worlds]);
 
   const handleToggleSound = () => {
     const nextMute = !soundMuted;
@@ -297,6 +332,9 @@ export default function App() {
           isReadOnly={isReadOnly}
         />
       )}
+
+      {/* Global Minecraft Custom Tooltip Component */}
+      <MinecraftTooltip />
     </div>
   );
 }

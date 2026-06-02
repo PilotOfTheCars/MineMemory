@@ -288,6 +288,32 @@ body {
   pointer-events: none;
 }
 
+.mc-tooltip-realistic {
+  background-color: #100010;
+  image-rendering: pixelated;
+  font-smooth: never;
+  -webkit-font-smoothing: none;
+}
+
+@keyframes mc-tooltip-pop {
+  0% {
+    opacity: 0;
+    transform: scale(0.92);
+  }
+  50% {
+    opacity: 0.82;
+    transform: scale(0.97);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.animate-mc-tooltip {
+  animation: mc-tooltip-pop 0.09s steps(3, end) forwards;
+}
+
 /* Animated grass/fire indicators */
 @keyframes heart-pulse {
   0%, 100% { transform: scale(1); }

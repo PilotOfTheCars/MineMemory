@@ -19,10 +19,18 @@ export default function CoordinateVault({
   isReadOnly = false
 }: CoordinateVaultProps) {
   const [showForm, setShowForm] = useState(false);
+  const [showCalc, setShowCalc] = useState(false);
   const [search, setSearch] = useState('');
   const [filterDim, setFilterDim] = useState<Dimension | 'All'>('All');
   const [filterCat, setFilterCat] = useState<CoordCategory | 'All'>('All');
   const [copiedId, setCopiedId] = useState<string | null>(null);
+
+  // Portal Calculator states
+  const [owX, setOwX] = useState<string>('');
+  const [owZ, setOwZ] = useState<string>('');
+  const [nethX, setNethX] = useState<string>('');
+  const [nethZ, setNethZ] = useState<string>('');
+  const [calcCopied, setCalcCopied] = useState<string | null>(null);
 
   // Form states
   const [name, setName] = useState('');
@@ -34,6 +42,54 @@ export default function CoordinateVault({
   const [notes, setNotes] = useState('');
   const [dangerLevel, setDangerLevel] = useState<Coordinate['dangerLevel']>('Low');
   const [isPinned, setIsPinned] = useState(false);
+
+  const handleOwXChange = (val: string) => {
+    setOwX(val);
+    if (val === '-' || val === '') {
+      setNethX('');
+      return;
+    }
+    const num = Number(val);
+    if (!isNaN(num)) {
+      setNethX(String(Math.round(num / 8)));
+    }
+  };
+
+  const handleOwZChange = (val: string) => {
+    setOwZ(val);
+    if (val === '-' || val === '') {
+      setNethZ('');
+      return;
+    }
+    const num = Number(val);
+    if (!isNaN(num)) {
+      setNethZ(String(Math.round(num / 8)));
+    }
+  };
+
+  const handleNethXChange = (val: string) => {
+    setNethX(val);
+    if (val === '-' || val === '') {
+      setOwX('');
+      return;
+    }
+    const num = Number(val);
+    if (!isNaN(num)) {
+      setOwX(String(Math.round(num * 8)));
+    }
+  };
+
+  const handleNethZChange = (val: string) => {
+    setNethZ(val);
+    if (val === '-' || val === '') {
+      setOwZ('');
+      return;
+    }
+    const num = Number(val);
+    if (!isNaN(num)) {
+      setOwZ(String(Math.round(num * 8)));
+    }
+  };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -98,15 +154,174 @@ export default function CoordinateVault({
         </div>
 
         {!isReadOnly && (
-          <button
-            onClick={() => { sounds.playClick(); setShowForm(!showForm); }}
-            className="mc-button mc-button-green flex items-center gap-2 self-start"
-          >
-            <Plus className="w-4 h-4 text-[#ffffa0]" />
-            {showForm ? 'CLOSE FORM' : 'ADD LANDMARK'}
-          </button>
+          <div className="flex flex-wrap gap-2">
+            <button
+              onClick={() => { sounds.playClick(); setShowCalc(!showCalc); setShowForm(false); }}
+              className={`mc-button flex items-center gap-2 self-start ${showCalc ? 'border-amber-400 text-amber-300 font-bold' : ''}`}
+            >
+              <Compass className="w-4 h-4 shrink-0 text-amber-400" />
+              {showCalc ? 'CLOSE CALCULATOR' : '🌀 PORTAL MATH'}
+            </button>
+
+            <button
+              onClick={() => { sounds.playClick(); setShowForm(!showForm); setShowCalc(false); }}
+              className="mc-button mc-button-green flex items-center gap-2 self-start"
+            >
+              <Plus className="w-4 h-4 text-[#ffffa0] shrink-0" />
+              {showForm ? 'CLOSE FORM' : 'ADD LANDMARK'}
+            </button>
+          </div>
         )}
       </div>
+
+      {showCalc && (
+        <div className="bg-zinc-900 border-4 border-zinc-700 p-6 mc-gui-panel max-w-2xl mx-auto text-white">
+          <div className="text-center border-b border-zinc-700 pb-3 mb-4">
+            <h3 className="font-pressstart text-xs text-mc-gold uppercase flex items-center justify-center gap-2">
+              🌀 DIMENSIONAL PORTAL MATHEMATICS
+            </h3>
+            <p className="text-[10px] text-zinc-400 uppercase mt-1">
+              Synchronize exact portal linkages between overworld layers and sub-nether coordinates
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {/* Overworld Column */}
+            <div className="bg-[#1f2d1e]/90 border-2 border-[#5fac52]/40 p-4 space-y-3">
+              <h4 className="font-pressstart text-[9px] text-[#55ff55] uppercase border-b border-[#3b5d21] pb-2">
+                🌲 OVERWORLD COORDS
+              </h4>
+              <div className="space-y-3 text-xs">
+                <div>
+                  <label className="block text-zinc-400 mb-1 font-mono uppercase text-[10px]">Overworld X (Width):</label>
+                  <input
+                    type="text"
+                    placeholder="e.g. 800"
+                    value={owX}
+                    onChange={(e) => handleOwXChange(e.target.value)}
+                    className="w-full bg-zinc-950 border border-[#5fac52]/40 p-2 font-mono text-white text-xs placeholder-zinc-700"
+                  />
+                </div>
+                <div>
+                  <label className="block text-zinc-400 mb-1 font-mono uppercase text-[10px]">Overworld Z (Depth):</label>
+                  <input
+                    type="text"
+                    placeholder="e.g. -240"
+                    value={owZ}
+                    onChange={(e) => handleOwZChange(e.target.value)}
+                    className="w-full bg-zinc-950 border border-[#5fac52]/40 p-2 font-mono text-white text-xs placeholder-zinc-700"
+                  />
+                </div>
+                <div className="pt-2 flex gap-2">
+                  <button
+                    onClick={() => {
+                      sounds.playXPDing();
+                      if (owX !== '' && owZ !== '') {
+                        setName('Linked Overworld Portal');
+                        setX(Number(owX));
+                        setY(64);
+                        setZ(Number(owZ));
+                        setDimension('Overworld');
+                        setCategory('Portal');
+                        setShowForm(true);
+                        setShowCalc(false);
+                      }
+                    }}
+                    disabled={owX === '' || owZ === ''}
+                    className="mc-button py-1.5 px-2 text-[8px] bg-[#3a5d21] text-white border-[#5fac52]/80 disabled:opacity-50"
+                  >
+                    💾 EXPORT TO FORM
+                  </button>
+                  <button
+                    onClick={() => {
+                      sounds.playClick();
+                      const cmd = `/execute in minecraft:overworld run tp @s ${owX || 0} 64 ${owZ || 0}`;
+                      navigator.clipboard.writeText(cmd).then(() => {
+                        setCalcCopied('ow');
+                        setTimeout(() => setCalcCopied(null), 2000);
+                      });
+                    }}
+                    disabled={owX === '' || owZ === ''}
+                    className="bg-zinc-800 hover:bg-zinc-750 px-2.5 py-1 text-[8px] border border-zinc-600 disabled:opacity-50"
+                  >
+                    {calcCopied === 'ow' ? '✓ COPIED!' : '📋 COPY TP'}
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            {/* Nether Column */}
+            <div className="bg-[#2a1b1b]/90 border-2 border-red-950/70 p-4 space-y-3">
+              <h4 className="font-pressstart text-[9px] text-[#ff5555] uppercase border-b border-red-900 pb-2">
+                🔥 NETHER REALM (1:8)
+              </h4>
+              <div className="space-y-3 text-xs">
+                <div>
+                  <label className="block text-zinc-400 mb-1 font-mono uppercase text-[10px]">Nether X (Overworld X ÷ 8):</label>
+                  <input
+                    type="text"
+                    placeholder="e.g. 100"
+                    value={nethX}
+                    onChange={(e) => handleNethXChange(e.target.value)}
+                    className="w-full bg-zinc-950 border border-[#ff5555]/30 p-2 font-mono text-white text-xs placeholder-zinc-700"
+                  />
+                </div>
+                <div>
+                  <label className="block text-zinc-400 mb-1 font-mono uppercase text-[10px]">Nether Z (Overworld Z ÷ 8):</label>
+                  <input
+                    type="text"
+                    placeholder="e.g. -30"
+                    value={nethZ}
+                    onChange={(e) => handleNethZChange(e.target.value)}
+                    className="w-full bg-zinc-950 border border-[#ff5555]/30 p-2 font-mono text-white text-xs placeholder-zinc-700"
+                  />
+                </div>
+                <div className="pt-2 flex gap-2">
+                  <button
+                    onClick={() => {
+                      sounds.playXPDing();
+                      if (nethX !== '' && nethZ !== '') {
+                        setName('Linked Nether Portal');
+                        setX(Number(nethX));
+                        setY(120);
+                        setZ(Number(nethZ));
+                        setDimension('Nether');
+                        setCategory('Portal');
+                        setShowForm(true);
+                        setShowCalc(false);
+                      }
+                    }}
+                    disabled={nethX === '' || nethZ === ''}
+                    className="mc-button py-1.5 px-2 text-[8px] bg-red-950 text-white border-red-800 disabled:opacity-50 font-bold"
+                  >
+                    💾 EXPORT TO FORM
+                  </button>
+                  <button
+                    onClick={() => {
+                      sounds.playClick();
+                      const cmd = `/execute in minecraft:the_nether run tp @s ${nethX || 0} 120 ${nethZ || 0}`;
+                      navigator.clipboard.writeText(cmd).then(() => {
+                        setCalcCopied('nether');
+                        setTimeout(() => setCalcCopied(null), 2000);
+                      });
+                    }}
+                    disabled={nethX === '' || nethZ === ''}
+                    className="bg-zinc-800 hover:bg-zinc-750 px-2.5 py-1 text-[8px] border border-zinc-600 disabled:opacity-50"
+                  >
+                    {calcCopied === 'nether' ? '✓ COPIED!' : '📋 COPY TP'}
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div className="bg-black/30 border border-zinc-700 p-3 mt-4 text-[10.5px] font-mono leading-relaxed text-zinc-300">
+            <p>
+              <strong>📐 HOW LINKAGE WORKS:</strong> Every 8 horizontal blocks traveled in the Overworld map equals exactly 1 block inside the Nether dimension. To link two specific portal chambers together, divide your Overworld (X, Z) coordinates by 8 and place your Nether Portal at that resulting math! This tool automatically solves portal matching.
+            </p>
+          </div>
+        </div>
+      )}
 
       {showForm ? (
           /* Form styled as classic GUI popup */
